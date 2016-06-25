@@ -4,13 +4,13 @@ useMXNETModel = TRUE
 
 library(rplot)
 library(rmodel)
-library(h2o)
 library(data.table)
 
 source('scripts/tools.R', local = TRUE)
 lastRandomRow = 1
 
 if (useMXNETModel) {
+  library(mxnet)
   df = fread("./data/optdigits.data", sep=",", header=FALSE)
   dm = data.matrix(df)
   
@@ -19,10 +19,12 @@ if (useMXNETModel) {
   mx.ctx.default(mx.cpu())
   
 } else if (loadWorkspace) {
+  library(h2o)
   load("data/ws.RData")
   if (startH2O) localH2O = h2o.init(startH2O = TRUE)
   else localH2O = h2o.init(startH2O = FALSE)
 } else {
+  library(h2o)
   # localH2O = h2o.init(ip="localhost", 54442, startH2O = FALSE)
   localH2O = h2o.init(startH2O = TRUE)
   
