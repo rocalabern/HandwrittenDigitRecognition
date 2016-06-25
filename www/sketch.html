@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Draw</title>
+
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<script src='http://intridea.github.io/sketch.js/lib/sketch.js'></script>
+
+		<style type='text/css'>
+		  .tools a {
+		    border: 1px solid black; height: 30px; line-height: 30px; padding: 0 10px; vertical-align: middle; text-align: center; text-decoration: none; color: black; font-weight: bold;
+		  }
+		</style>
+	</head>
+
+	<body>
+
+		<input type="button" value="Export" id="ExportButton">
+
+		<div class="tools">
+		  <a href="#tools_sketch" data-tool="marker">Marker</a>
+		  <a href="#tools_sketch" data-tool="eraser">Eraser</a>
+		  <a href="#tools_sketch" data-download="png">Download</a>
+		  <a href='#tools_sketch' data-size='1' style='background: #ccc'>1</a>
+		  <a href='#tools_sketch' data-size='2' style='background: #ccc'>2</a>
+		  <a href='#tools_sketch' data-size='3' style='background: #ccc'>3</a>
+		  <a href='#tools_sketch' data-size='5' style='background: #ccc'>5</a>
+		  <a href='#tools_sketch' data-size='8' style='background: #ccc'>8</a>
+		</div>
+
+		<div style="border: 2px solid #9999BB; width: 64px; height:64px;">
+			<canvas id="tools_sketch" width="64px" height="64px"></canvas>
+		</div>
+
+		<script type="text/javascript">
+		  $(function() {
+		    $('#tools_sketch').sketch({defaultColor: "#AAA"});
+		  });
+		</script>
+
+		<script>
+		  $(document).ready(function(){
+		    $('#ExportButton').click(function(){
+		       var e = $('#tools_sketch');
+			e.toDataURL("image/png")
+			console.log("Hello");
+		    });
+		  });
+		</script>
+
+
+	</body>
+
+</html>
+
+
+
